@@ -58,4 +58,8 @@ public class EmpleadoPermanente extends Empleado {
         return super.toString() + String.format(" - Permanente (Beneficios: %.2f%%, Vacaciones: %d días)", 
                 beneficios * 100, vacacionesAcumuladas);
     }
+
+    public void setBeneficios(double parseDouble) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

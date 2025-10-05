@@ -68,4 +68,12 @@ public class EmpleadoTemporal extends Empleado {
         return super.toString() + String.format(" - Temporal (Fin: %s, Proyecto: %s)", 
                 fechaFinContrato, proyectoAsignado);
     }
+
+    public void setFechaFinContrato(LocalDate parse) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void setProyectoAsignado(String trim) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
 }

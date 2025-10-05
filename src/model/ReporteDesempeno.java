@@ -111,4 +111,8 @@ public class ReporteDesempeno {
         return String.format("Reporte %s - Empleado: %s - Período: %s - Puntaje: %.2f", 
                 id, empleadoId, periodo, puntaje);
     }
+
+    public String exportar() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
 }

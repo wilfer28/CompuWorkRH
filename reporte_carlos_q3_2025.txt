@@ -5,7 +5,7 @@
 ID Reporte: R002
 Empleado: Carlos Rodríguez (ID: E002) - Email: carlos.rodriguez@compuwork.com - Tel: 3007654321 - Ingreso: 2019-06-10
 Período: 2025-Q3
-Fecha Evaluación: 2025-09-29
+Fecha Evaluación: 2025-10-02
 Puntaje: 87,10/100
 
 Comentarios:

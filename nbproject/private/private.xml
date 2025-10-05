@@ -2,6 +2,19 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Wilfer/OneDrive/Desktop/CompuWorkRH/src/model/ReporteDesempeno.java</file>
+            <file>file:/C:/Users/Wilfer/OneDrive/Desktop/CompuWorkRH/src/view/MainWindow.java</file>
+            <file>file:/C:/Users/Wilfer/OneDrive/Desktop/CompuWorkRH/src/model/Departamento.java</file>
+            <file>file:/C:/Users/Wilfer/OneDrive/Desktop/CompuWorkRH/src/view/AsignacionWindow.java</file>
+            <file>file:/C:/Users/Wilfer/OneDrive/Desktop/CompuWorkRH/src/model/Empleado.java</file>
+            <file>file:/C:/Users/Wilfer/OneDrive/Desktop/CompuWorkRH/src/model/EmpleadoTemporal.java</file>
+            <file>file:/C:/Users/Wilfer/OneDrive/Desktop/CompuWorkRH/src/view/ReportesIndividualesWindow.java</file>
+            <file>file:/C:/Users/Wilfer/OneDrive/Desktop/CompuWorkRH/src/view/ReportesDepartamentalesWindow.java</file>
+            <file>file:/C:/Users/Wilfer/OneDrive/Desktop/CompuWorkRH/src/model/EmpleadoPermanente.java</file>
+            <file>file:/C:/Users/Wilfer/OneDrive/Desktop/CompuWorkRH/src/view/EmpleadosWindow.java</file>
+            <file>file:/C:/Users/Wilfer/OneDrive/Desktop/CompuWorkRH/test/test/DepartamentoTest.java</file>
+            <file>file:/C:/Users/Wilfer/OneDrive/Desktop/CompuWorkRH/src/view/DepartamentosWindow.java</file>
+        </group>
     </open-files>
 </project-private>

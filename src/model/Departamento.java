@@ -14,10 +14,10 @@ import java.util.*;
  */
 public class Departamento {
     private final String id;
-    private final String nombre;
-    private final String descripcion;
-    private final double presupuesto;
-    private final String ubicacion;
+    private String nombre;
+    private String descripcion;
+    private double presupuesto;
+    private String ubicacion;
     private final List<Empleado> empleados;
 
     public Departamento(String id, String nombre, String descripcion, 
@@ -30,11 +30,7 @@ public class Departamento {
         this.empleados = new ArrayList<>();
     }
 
-    /**
-     * Agrega un empleado al departamento
-     * @param empleado
-     * @throws exceptions.AssignmentException
-     */
+    // Métodos para agregar y remover empleados
     public void agregarEmpleado(Empleado empleado) throws AssignmentException {
         if (empleado == null) {
             throw new AssignmentException("El empleado no puede ser nulo");
@@ -45,11 +41,6 @@ public class Departamento {
         empleados.add(empleado);
     }
 
-    /**
-     * Remueve un empleado del departamento
-     * @param empleado
-     * @throws exceptions.AssignmentException
-     */
     public void removerEmpleado(Empleado empleado) throws AssignmentException {
         if (empleado == null) {
             throw new AssignmentException("El empleado no puede ser nulo");
@@ -59,36 +50,50 @@ public class Departamento {
         }
     }
 
-    /**
-     * Obtiene una lista inmutable de empleados
-     * @return 
-     */
+    // ✅ Este es el que debes usar
+    public List<Empleado> getEmpleados() {
+        return empleados;
+    }
+
+    // También tienes este que devuelve lista inmutable (opcional usarlo)
     public List<Empleado> obtenerEmpleados() {
         return Collections.unmodifiableList(empleados);
     }
 
-    /**
-     * Busca un empleado por ID dentro del departamento
-     * @param idEmpleado
-     * @return 
-     */
+    // Buscar por ID
     public Optional<Empleado> buscarEmpleadoPorId(String idEmpleado) {
         return empleados.stream()
                 .filter(emp -> emp.getId().equals(idEmpleado))
                 .findFirst();
     }
 
-    // Getters
-    public String getId() { return id; }
-    public String getNombre() { return nombre; }
-    public String getDescripcion() { return descripcion; }
-    public double getPresupuesto() { return presupuesto; }
-    public String getUbicacion() { return ubicacion; }
-    public int getCantidadEmpleados() { return empleados.size(); }
+    // Getters y setters básicos
+    public String getId()
+    { return id; }
+    public String getNombre()
+    { return nombre; }
+    public String getDescripcion()
+    { return descripcion; }
+    public double getPresupuesto()
+    { return presupuesto; }
+    public String getUbicacion()
+    { return ubicacion; }
+    public int getCantidadEmpleados()
+    { return empleados.size(); }
 
     @Override
     public String toString() {
         return String.format("Departamento %s (%s) - Presupuesto: $%.2f - Ubicación: %s - Empleados: %d",
                 nombre, id, presupuesto, ubicacion, empleados.size());
     }
+
+    // ✅ Setters implementados (si los necesitas en la GUI)
+    public void setNombre(String nombre)
+    { this.nombre = nombre; }
+    public void setDescripcion(String descripcion)
+    { this.descripcion = descripcion; }
+    public void setUbicacion(String ubicacion)
+    { this.ubicacion = ubicacion; }
+    public void setPresupuesto(double presupuesto)
+    { this.presupuesto = presupuesto; }
 }

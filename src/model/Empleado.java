@@ -90,4 +90,28 @@ import java.util.Objects;
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    public void setNombre(String trim) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    public void setApellido(String trim) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    public void setEmail(String trim) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    public void setTelefono(String trim) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    public void setSalario(double parseDouble) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    public Object getSalario() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
 }

@@ -5,7 +5,7 @@
 ID Reporte: R003
 Empleado: Sofia López (ID: E003) - Email: sofia.lopez@compuwork.com - Tel: 3009876543 - Ingreso: 2024-08-01
 Período: 2025-Q3
-Fecha Evaluación: 2025-09-29
+Fecha Evaluación: 2025-10-02
 Puntaje: 80,60/100
 
 Comentarios:
