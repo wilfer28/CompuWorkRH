@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package view;
+import java.util.ArrayList;
 import model.Departamento;
 import service.SistemaRH;
 import exceptions.NotFoundException;
@@ -247,7 +248,7 @@ public class DepartamentosWindow extends JFrame {
     
     private void loadDepartamentos() {
         tableModel.setRowCount(0);
-        List<Departamento> departamentos = (List<Departamento>) sistemaRH.listarDepartamentos();
+        List<Departamento> departamentos = new ArrayList<>(sistemaRH.listarDepartamentos());
         
         for (Departamento dept : departamentos) {
             Object[] row = {
@@ -255,7 +256,7 @@ public class DepartamentosWindow extends JFrame {
                 dept.getNombre(),
                 dept.getDescripcion(),
                 String.format("$%.2f", dept.getPresupuesto()),
-              
+                dept.getEmpleados().size()
             };
             tableModel.addRow(row);
         }

@@ -7,13 +7,10 @@ import exceptions.*;
 import model.*;
 import java.util.*;
 import java.util.stream.Collectors;
-/**
- *
- * @author Wilfer
- */
 
 /**
  * Servicio principal para la gestión del sistema de recursos humanos
+ * @author Wilfer
  */
 public class SistemaRH {
     private final Map<String, Empleado> empleados;
@@ -30,7 +27,6 @@ public class SistemaRH {
 
     /**
      * Crea un nuevo empleado en el sistema
-     * @param empleado
      */
     public void crearEmpleado(Empleado empleado) {
         if (empleado == null) {
@@ -41,10 +37,25 @@ public class SistemaRH {
     }
 
     /**
+     * Agrega un empleado al sistema
+     */
+    public void agregarEmpleado(Empleado empleado) {
+        if (empleado == null) {
+            throw new IllegalArgumentException("El empleado no puede ser nulo");
+        }
+        empleados.put(empleado.getId(), empleado);
+        System.out.println("Empleado agregado: " + empleado.getNombre() + " " + empleado.getApellido());
+    }
+
+    /**
+     * Método alternativo para agregar empleado
+     */
+    public void agregarEmpleados(Empleado empleado) {
+        agregarEmpleado(empleado);
+    }
+
+    /**
      * Actualiza un empleado existente
-     * @param id
-     * @param empleadoActualizado
-     * @throws exceptions.NotFoundException
      */
     public void actualizarEmpleado(String id, Empleado empleadoActualizado) throws NotFoundException {
         if (!empleados.containsKey(id)) {
@@ -56,9 +67,6 @@ public class SistemaRH {
 
     /**
      * Obtiene un empleado por su ID
-     * @param id
-     * @return 
-     * @throws exceptions.NotFoundException
      */
     public Empleado obtenerEmpleado(String id) throws NotFoundException {
         Empleado empleado = empleados.get(id);
@@ -69,9 +77,14 @@ public class SistemaRH {
     }
 
     /**
+     * Busca un empleado por ID (sin lanzar excepción)
+     */
+    public Empleado buscarEmpleado(String id) {
+        return empleados.get(id);
+    }
+
+    /**
      * Elimina un empleado del sistema
-     * @param id
-     * @throws exceptions.NotFoundException
      */
     public void eliminarEmpleado(String id) throws NotFoundException {
         Empleado empleado = empleados.remove(id);
@@ -96,7 +109,6 @@ public class SistemaRH {
 
     /**
      * Lista todos los empleados
-     * @return 
      */
     public Collection<Empleado> listarEmpleados() {
         return Collections.unmodifiableCollection(empleados.values());
@@ -106,7 +118,6 @@ public class SistemaRH {
 
     /**
      * Crea un nuevo departamento
-     * @param departamento
      */
     public void crearDepartamento(Departamento departamento) {
         if (departamento == null) {
@@ -117,10 +128,18 @@ public class SistemaRH {
     }
 
     /**
+     * Agrega un departamento al sistema
+     */
+    public void agregarDepartamento(Departamento dept) {
+        if (dept == null) {
+            throw new IllegalArgumentException("El departamento no puede ser nulo");
+        }
+        departamentos.put(dept.getId(), dept);
+        System.out.println("Departamento agregado: " + dept.getNombre());
+    }
+
+    /**
      * Obtiene un departamento por su ID
-     * @param id
-     * @return 
-     * @throws exceptions.NotFoundException
      */
     public Departamento obtenerDepartamento(String id) throws NotFoundException {
         Departamento departamento = departamentos.get(id);
@@ -131,9 +150,14 @@ public class SistemaRH {
     }
 
     /**
+     * Busca un departamento por ID (sin lanzar excepción)
+     */
+    public Departamento buscarDepartamento(String deptId) {
+        return departamentos.get(deptId);
+    }
+
+    /**
      * Elimina un departamento del sistema
-     * @param id
-     * @throws exceptions.NotFoundException
      */
     public void eliminarDepartamento(String id) throws NotFoundException {
         Departamento departamento = departamentos.remove(id);
@@ -146,7 +170,6 @@ public class SistemaRH {
 
     /**
      * Lista todos los departamentos
-     * @return 
      */
     public Collection<Departamento> listarDepartamentos() {
         return Collections.unmodifiableCollection(departamentos.values());
@@ -156,10 +179,6 @@ public class SistemaRH {
 
     /**
      * Asigna un empleado a un departamento
-     * @param idEmpleado
-     * @param idDepartamento
-     * @throws exceptions.NotFoundException
-     * @throws exceptions.AssignmentException
      */
     public void asignarEmpleadoADepartamento(String idEmpleado, String idDepartamento) 
             throws NotFoundException, AssignmentException {
@@ -172,10 +191,6 @@ public class SistemaRH {
 
     /**
      * Remueve un empleado de un departamento
-     * @param idEmpleado
-     * @param idDepartamento
-     * @throws exceptions.NotFoundException
-     * @throws exceptions.AssignmentException
      */
     public void removerEmpleadoDeDepartamento(String idEmpleado, String idDepartamento) 
             throws NotFoundException, AssignmentException {
@@ -190,9 +205,6 @@ public class SistemaRH {
 
     /**
      * Genera un reporte individual de desempeño
-     * @param reporte
-     * @return 
-     * @throws exceptions.NotFoundException
      */
     public ReporteDesempeno generarReporteIndividual(ReporteDesempeno reporte) throws NotFoundException {
         // Verificar que el empleado existe
@@ -207,20 +219,51 @@ public class SistemaRH {
     }
 
     /**
+     * Agrega un reporte al sistema
+     */
+    public void agregarReporte(ReporteDesempeno reporte) {
+        if (reporte == null) {
+            throw new IllegalArgumentException("El reporte no puede ser nulo");
+        }
+        reportesPorEmpleado.computeIfAbsent(reporte.getEmpleadoId(), k -> new ArrayList<>())
+                          .add(reporte);
+        System.out.println("Reporte agregado: " + reporte.getId());
+    }
+
+    /**
      * Obtiene todos los reportes de un empleado
-     * @param idEmpleado
-     * @return 
      */
     public List<ReporteDesempeno> obtenerReportesDeEmpleado(String idEmpleado) {
         return reportesPorEmpleado.getOrDefault(idEmpleado, Collections.emptyList());
     }
 
     /**
+     * Lista todos los reportes del sistema
+     */
+    public List<ReporteDesempeno> listarReportes() {
+        List<ReporteDesempeno> todosLosReportes = new ArrayList<>();
+        reportesPorEmpleado.values().forEach(todosLosReportes::addAll);
+        return todosLosReportes;
+    }
+
+    /**
+     * Elimina un reporte del sistema
+     */
+    public void eliminarReporte(String reporteId) {
+        boolean encontrado = false;
+        for (List<ReporteDesempeno> reportes : reportesPorEmpleado.values()) {
+            encontrado = reportes.removeIf(r -> r.getId().equals(reporteId));
+            if (encontrado) break;
+        }
+        if (encontrado) {
+            System.out.println("Reporte eliminado: " + reporteId);
+        } else {
+            System.out.println("Reporte no encontrado: " + reporteId);
+        }
+    }
+
+    /**
      * Genera reporte consolidado de un departamento
-     * @param idDepartamento
-     * @param periodo
-     * @return 
-     * @throws exceptions.NotFoundException 
      */
     public List<ReporteDesempeno> generarReporteDepartamental(String idDepartamento, String periodo) 
             throws NotFoundException {
@@ -247,10 +290,6 @@ public class SistemaRH {
 
     /**
      * Exporta un reporte a archivo
-     * @param reporte
-     * @param rutaArchivo
-     * @throws exceptions.NotFoundException
-     * @throws exceptions.ReportGenerationException
      */
     public void exportarReporte(ReporteDesempeno reporte, String rutaArchivo) 
             throws NotFoundException, ReportGenerationException {
@@ -283,37 +322,5 @@ public class SistemaRH {
         System.out.println("Empleados permanentes: " + empleadosPermanentes);
         System.out.println("Empleados temporales: " + empleadosTemporales);
         System.out.println("===============================\n");
-    }
-
-    public Departamento buscarDepartamento(String deptId) {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
-
-    public List<ReporteDesempeno> listarReportes() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public void agregarEmpleados(Empleado empleado) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public void agregarEmpleado(Empleado empleado) {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
-
-    public Empleado buscarEmpleado(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
-
-    public void agregarReporte(ReporteDesempeno reporte) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public void eliminarReporte(String reporteId) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public void agregarDepartamento(Departamento dept) {
-        throw new UnsupportedOperationException("Not supported yet."); 
     }
 }

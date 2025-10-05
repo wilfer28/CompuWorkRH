@@ -10,6 +10,7 @@ package view;
  */
 
 import model.*;
+import java.util.ArrayList;
 import service.SistemaRH;
 import exceptions.*;
 import javax.swing.*;
@@ -171,7 +172,7 @@ public class ReportesIndividualesWindow extends JFrame {
     
     private void loadEmpleados() {
         cmbEmpleado.removeAllItems();
-        List<Empleado> empleados = (List<Empleado>) sistemaRH.listarEmpleados();
+        List<Empleado> empleados = new ArrayList<>(sistemaRH.listarEmpleados());
         
         for (Empleado emp : empleados) {
             String item = emp.getId() + " - " + emp.getNombre() + " " + emp.getApellido();

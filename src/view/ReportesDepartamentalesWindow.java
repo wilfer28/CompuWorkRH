@@ -9,6 +9,7 @@ package view;
  * @author Wilfer
  */
 import model.*;
+import java.util.ArrayList;
 import service.SistemaRH;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -154,7 +155,7 @@ public class ReportesDepartamentalesWindow extends JFrame {
     
     private void loadDepartamentos() {
         cmbDepartamento.removeAllItems();
-        List<Departamento> departamentos = (List<Departamento>) sistemaRH.listarDepartamentos();
+        List<Departamento> departamentos = new ArrayList<>(sistemaRH.listarDepartamentos());
         
         for (Departamento dept : departamentos) {
             String item = dept.getId() + " - " + dept.getNombre();
@@ -180,7 +181,7 @@ public class ReportesDepartamentalesWindow extends JFrame {
             }
             
             tableModel.setRowCount(0);
-            List<Empleado> empleados = (List<Empleado>) dept.getEmpleados();
+            List<Empleado> empleados = new ArrayList<>(dept.getEmpleados());
             List<ReporteDesempeno> reportes = sistemaRH.listarReportes();
             
             double sumaPuntajes = 0;

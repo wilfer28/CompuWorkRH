@@ -10,6 +10,7 @@ package view;
  */
 
 import model.*;
+import java.util.ArrayList;
 import service.SistemaRH;
 import exceptions.*;
 import javax.swing.*;
@@ -382,7 +383,7 @@ public class EmpleadosWindow extends JFrame {
     
     private void loadEmpleados() {
         tableModel.setRowCount(0);
-        List<Empleado> empleados = (List<Empleado>) sistemaRH.listarEmpleados();
+        List<Empleado> empleados = new ArrayList<>(sistemaRH.listarEmpleados());
         
         for (Empleado emp : empleados) {
             String tipo = emp instanceof EmpleadoPermanente ? "Permanente" : "Temporal";

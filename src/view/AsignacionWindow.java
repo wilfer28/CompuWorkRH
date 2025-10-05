@@ -9,6 +9,7 @@ package view;
  * @author Wilfer
  */
 import model.*;
+import java.util.ArrayList;
 import service.SistemaRH;
 import exceptions.*;
 import javax.swing.*;
@@ -143,7 +144,7 @@ public class AsignacionWindow extends JFrame {
     
     private void loadEmpleados() {
         cmbEmpleado.removeAllItems();
-        List<Empleado> empleados = (List<Empleado>) sistemaRH.listarEmpleados();
+        List<Empleado> empleados = new ArrayList<>(sistemaRH.listarEmpleados());
         
         for (Empleado emp : empleados) {
             String item = emp.getId() + " - " + emp.getNombre() + " " + emp.getApellido();
@@ -153,7 +154,7 @@ public class AsignacionWindow extends JFrame {
     
     private void loadDepartamentos() {
         cmbDepartamento.removeAllItems();
-        List<Departamento> departamentos = (List<Departamento>) sistemaRH.listarDepartamentos();
+        List<Departamento> departamentos = new ArrayList<>(sistemaRH.listarDepartamentos());
         
         for (Departamento dept : departamentos) {
             String item = dept.getId() + " - " + dept.getNombre();
@@ -163,7 +164,7 @@ public class AsignacionWindow extends JFrame {
     
     private void loadAsignaciones() {
         tableModel.setRowCount(0);
-        List<Departamento> departamentos = (List<Departamento>) sistemaRH.listarDepartamentos();
+        List<Departamento> departamentos = new ArrayList<>(sistemaRH.listarDepartamentos());
         
         for (Departamento dept : departamentos) {
             for (Empleado emp : dept.getEmpleados()) {
